@@ -1,0 +1,43 @@
+<html>
+<head>
+	<title>Login</title>
+	<script>
+		// FOR TESTING ONLY
+		var displayForRegister = true;
+
+		/*  This function will get the email and check the database
+		    for the email's existence. Then enable either the "Sign in" button 
+		    or "Register" button as appropriate. If "Register", it should also 
+		    display the "Name" field and "Organisation" or "Individual" dropdown
+		    menu.
+		 */
+		var emailEntered = function(){
+			if( displayForRegister ){
+				document.getElementById('forRegister').style.display = 'block';
+				document.getElementById('register').disabled = false;
+			}
+		}
+
+		var submitted = function(){
+			alert('form was submitted!');
+		}
+	</script>
+</head>
+<body>
+	<form onSubmit="submitted()" method="post">
+		<p id="instructions">Please enter your email.</p>
+		Email: <input onChange="emailEntered()" type="text" name="email" 
+			id="email"><br>
+		Password: <input type="password" name="password" id="password"><br>
+		<div id="forRegister" style="display:none">
+			<select id="organisation">
+				<option value="organisation"> Organisation </option>
+				<option value="individual"> Individual </option>
+			</select><br>
+			Name: <input type="text" name="clientName" id="clientName"><br>
+		</div>
+		<button type="submit" id="signIn"  disabled="true">Sign in</button>
+		<button type="submit" id="register" disabled="true">Register</button>
+	</form>
+</body>
+</html>
